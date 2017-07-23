@@ -33,10 +33,9 @@ install_ss_panel(){
 		fi
 	}
 	install_soft_for_each
-	wget -c https://raw.githubusercontent.com/LuyangCAT/ss-panel-and-ss-py-mu/master/lnmp1.3.zip && unzip lnmp1.3.zip && cd lnmp1.3 && chmod +x install.sh && ./install.sh lnmp
 	chattr -i /home/wwwroot/default/.user.ini
 	rm -rf /home/wwwroot/default
-	wget -N -P /home/wwwroot/default/ https://github.com/orvice/ss-panel/archive/v4.0.0.zip && unzip v4.0.0.zip && rm -rf v4.0.0.zip
+	git clone https://github.com/mmmwhy/ss-panel.git "/home/wwwroot/default"
 	cd /home/wwwroot/default
 	curl -sS https://install.phpcomposer.com/installer | php
 	chmod +x composer.phar
@@ -45,7 +44,7 @@ install_ss_panel(){
 	mysql -uroot -proot -e"create database ss;" 
 	mysql -uroot -proot -e"use ss;" 
 	mysql -uroot -proot ss < /home/wwwroot/default/db.sql
-	wget -N -P  /usr/local/nginx/conf/ https://raw.githubusercontent.com/LuyangCAT/ss-panel-and-ss-py-mu/master/nginx.conf 
+	wget -N -P  /usr/local/nginx/conf/ http://home.ustc.edu.cn/~mmmwhy/nginx.conf 
 	lnmp nginx restart
 }
 
@@ -55,9 +54,9 @@ install_ss_py_mu(){
 	echo
 	echo "#############################################################"
 	echo "# One click Install Shadowsocks-Python-Manyuser             #"
-	echo "# Github: https://github.com/mmmmmm/ss-panel-and-ss-py-mu   #"
-	echo "# Author: luyan                                             #"
-	echo "# https://luyang.today			                  #"
+	echo "# Github: https://github.com/mmmwhy/ss-panel-and-ss-py-mu   #"
+	echo "# Author: 91vps                                             #"
+	echo "# https://91vps.club/2017/05/26/ss-panel/                   #"
 	echo "#############################################################"
 	echo
 	#Check Root
@@ -91,7 +90,7 @@ install_ss_py_mu(){
 			yum install git lsof -y
 			yum install python-setuptools -y 
 			yum -y groupinstall "Development Tools" -y
-			wget https://raw.githubusercontent.com/LuyangCAT/ss-panel-and-ss-py-mu/master/libsodium-1.0.11.tar.gz
+			wget https://raw.githubusercontent.com/mmmwhy/ss-panel-and-ss-py-mu/master/libsodium-1.0.11.tar.gz
 			tar xf libsodium-1.0.11.tar.gz && cd libsodium-1.0.11
 			./configure && make -j2 && make install
 			echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf
@@ -103,7 +102,7 @@ install_ss_py_mu(){
 		apt-get install supervisor -y
 		apt-get install git -y
 		apt-get install build-essential -y
-		wget https://raw.githubusercontent.com/LuyangCAT/ss-panel-and-ss-py-mu/master/libsodium-1.0.11.tar.gz
+		wget https://raw.githubusercontent.com/mmmwhy/ss-panel-and-ss-py-mu/master/libsodium-1.0.11.tar.gz
 		tar xf libsodium-1.0.11.tar.gz && cd libsodium-1.0.11
 		./configure && make -j2 && make install
 		ldconfig
@@ -169,7 +168,7 @@ one_click_all(){
 			yum install git lsof -y
 			yum install python-setuptools -y 
 			yum -y groupinstall "Development Tools" -y
-			wget https://raw.githubusercontent.com/LuyangCAT/ss-panel-and-ss-py-mu/master/libsodium-1.0.11.tar.gz
+			wget https://raw.githubusercontent.com/mmmwhy/ss-panel-and-ss-py-mu/master/libsodium-1.0.11.tar.gz
 			tar xf libsodium-1.0.11.tar.gz && cd libsodium-1.0.11
 			./configure && make -j2 && make install
 			echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf
@@ -181,7 +180,7 @@ one_click_all(){
 		apt-get install supervisor -y
 		apt-get install git -y
 		apt-get install build-essential -y
-		wget https://raw.githubusercontent.com/LuyangCAT/ss-panel-and-ss-py-mu/master/libsodium-1.0.11.tar.gz
+		wget https://raw.githubusercontent.com/mmmwhy/ss-panel-and-ss-py-mu/master/libsodium-1.0.11.tar.gz
 		tar xf libsodium-1.0.11.tar.gz && cd libsodium-1.0.11
 		./configure && make -j2 && make install
 		ldconfig
@@ -211,10 +210,10 @@ one_click_all(){
 	cat shadowsocks.log
 	echo ""
 	echo "#############################################################"
-	echo "# 安装完成，登录http://${IPAddress}看看吧~               	   #"
-	echo "#  							  #"
-	echo "#     		                                          #"
-	echo "# Blog: https://ccav			                  #"
+	echo "# 安装完成，登录http://${IPAddress}看看吧~                  #"
+	echo "# Github: https://github.com/mmmwhy/ss-panel-and-ss-py-mu   #"
+	echo "# Author: 91vps                                             #"
+	echo "# Blog: https://91vps.club/2017/05/26/ss-panel/             #"
 	echo "#############################################################"
 }
 
@@ -222,9 +221,9 @@ one_click_all(){
 echo
 echo "#############################################################"
 echo "# One click Install SS-panel and Shadowsocks-Py-Mu          #"
-echo "#  							  #"
-echo "# 	                                                  #"
-echo "# 					                   #"
+echo "# Github: https://github.com/mmmwhy/ss-panel-and-ss-py-mu   #"
+echo "# Author: 91vps                                             #"
+echo "# https://91vps.club/2017/05/26/ss-panel/                   #"
 echo "# Please choose the server you want                         #"
 echo "# 1  SS-panel + SS-node One click Install                   #"
 echo "# 2  SS-panel One click Install                             #"
