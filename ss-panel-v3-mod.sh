@@ -3,10 +3,7 @@
 [ $(id -u) != "0" ] && { echo "Error: You must be root to run this script"; exit 1; }
 install_ss_panel_mod_v3(){
 	yum -y remove httpd
-	yum install -y unzip zip
-	wget -c https://raw.githubusercontent.com/mmmwhy/ss-panel-and-ss-py-mu/master/lnmp1.3.zip && unzip lnmp1.3.zip && cd lnmp1.3 && chmod +x install.sh && ./install.sh lnmp
 	cd /home/wwwroot/default/
-	yum install git -y
 	rm -rf index.html
 	wget https://raw.githubusercontent.com/mmmwhy/ss-panel-and-ss-py-mu/master/ss.panel_mod.zip && unzip ss.panel_mod.zip
 	chattr -i .user.ini
@@ -68,11 +65,6 @@ install_centos_ssr(){
 	chmod 0644 /var/swap
 	swapon /var/swap
 	echo '/var/swap   swap   swap   default 0 0' >> /etc/fstab
-	wget https://raw.githubusercontent.com/mmmwhy/ss-panel-and-ss-py-mu/master/libsodium-1.0.11.tar.gz
-	tar xf libsodium-1.0.11.tar.gz && cd libsodium-1.0.11
-	./configure && make -j2 && make install
-	echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf
-	ldconfig
 	#clone shadowsocks
 	cd /root
 	git clone -b manyuser https://github.com/glzjin/shadowsocks.git "/root/shadowsocks"
